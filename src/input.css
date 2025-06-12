@@ -6,16 +6,8 @@
 @theme {
     --font-quicksand: "Quicksand", serif;
     --animate-wavey: wavey 1s linear infinite;
-    --animation-delay-100: 100ms;
-    --animation-delay-200: 200ms;
-    --animation-delay-300: 300ms;
-    --animation-delay-400: 400ms;
-    --animation-delay-500: 500ms;
-    --animation-delay-600: 600ms;
-    --animation-delay-700: 700ms;
-    --animation-delay-800: 800ms;
-    --animation-delay-900: 900ms;
-    --animation-delay-1000: 1000ms;
+    --animation-delat-sm: 100ms;
+    --animation-delat-md: 200ms;
 
     @keyframes wavey {
 
@@ -32,12 +24,37 @@
 
 @utility animation-delay-* {
     animation-delay: --value(--animation-delay-*);
+    animation-delay: calc(--value(integer) * 1ms);
     animation-delay: --value([*])
 }
 
 @layer base {
     body {
         font-family: var(--font-quicksand);
+    }
+
+    h1 {
+        @apply text-6xl font-bold;
+    }
+
+    h2 {
+        @apply text-5xl font-bold;
+    }
+
+    h3 {
+        @apply text-4xl font-bold;
+    }
+
+    h4 {
+        @apply text-3xl font-bold;
+    }
+
+    h5 {
+        @apply text-2xl font-bold;
+    }
+
+    h6 {
+        @apply text-xl font-bold;
     }
 }
 
@@ -57,4 +74,24 @@
     &:is(:where(.group):is(.open, [open], :popover-open, :open) ~ *) {
         @slot;
     }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.container {
+    width: 100%;
+
+    @media (width >=40rem) {
+        max-width: 40rem;
+    }
+
+    @media (width >=48rem) {
+        max-width: 48rem;
+    }
+
+    @media (width >=64rem) {
+        max-width: 64rem;
+    }
+
+
 }
